@@ -1,6 +1,6 @@
 SMODS.Atlas {
-    key = "CrewLatroAtlas",
-    path = "CrewLatroAtlas.png",
+    key = "JokerAtlas",
+    path = "JokerAtlas.png",
     px = 71, py = 95
 }
 

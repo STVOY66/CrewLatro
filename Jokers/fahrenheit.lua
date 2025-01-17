@@ -16,7 +16,7 @@ SMODS.Joker {
     eternal_compat = true,
     perishable_compat = true,
     rarity = 1,
-    atlas = "CrewLatroAtlas",
+    atlas = "JokerAtlas",
     pos = { x = 0, y = 0 },
     cost = 6,
 
