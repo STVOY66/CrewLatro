@@ -5,7 +5,7 @@
 	"author": ["claaay", "DemarcoCooley", "GravyWizard", "w a y n e"],
 	"description": "Balatro mod for da Crew",
 	"prefix": "crew",
-	"main_file": "Jokers.lua",
+	"main_file": "main.lua",
 	"priority": 0,
 	"badge_colour": "FD0A0A",
 	"badge_text_colour": "FFFFFF",
