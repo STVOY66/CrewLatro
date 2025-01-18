@@ -1,3 +1,9 @@
+SMODS.Atlas {
+    key = "ConsumPlace",
+    path = "ConsumPlace.png",
+    px = 63, py = 93
+}
+
 SMODS.Consumable {
     key = "500kg",
     set = "Spectral",
@@ -11,7 +17,7 @@ SMODS.Consumable {
         return {vars = {card.ability.extra.payout, tern(G.GAME.kg_blast_zone == nil, card.ability.extra.default_blast, G.GAME.kg_blast_zone), card.ability.extra.default_blast}}
     end,
 
-    atlas = "ConsumAtlas",
+    atlas = "ConsumPlace",
     pos = { x = 0, y = 0 },
     cost = 10,
     unlocked = true,
@@ -22,6 +28,7 @@ SMODS.Consumable {
     can_repeat_soul = true,
 
     add_to_deck = function(self, card, card_table, other_card)
+        G.E_MANAGER:clear_queue("other")
         G.GAME.kg_blast_zone = math.floor(#G.playing_cards / card.ability.extra.denom)
         print(G.GAME.kg_blast_zone)
     end,
@@ -48,6 +55,5 @@ SMODS.Consumable {
             end
         }), "other")
 
-        G.E_MANAGER:clear_queue(other)
     end
 }

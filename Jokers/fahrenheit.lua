@@ -1,3 +1,9 @@
+SMODS.Atlas {
+    key = "Fahrenheit452",
+    path = "Fahrenheit 452.png",
+    px = 71, py = 95
+}
+
 SMODS.Joker {
     key = 'fahrenheit',
     loc_txt = {
@@ -16,7 +22,7 @@ SMODS.Joker {
     eternal_compat = true,
     perishable_compat = true,
     rarity = 1,
-    atlas = "JokerAtlas",
+    atlas = "Fahrenheit452",
     pos = { x = 0, y = 0 },
     cost = 6,
 
