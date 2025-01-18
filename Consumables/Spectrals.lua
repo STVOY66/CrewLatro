@@ -1,6 +1,6 @@
 SMODS.Atlas {
-    key = "ConsumPlace",
-    path = "ConsumPlace.png",
+    key = "500kg_Bomb",
+    path = "500kg_Bomb.png",
     px = 63, py = 93
 }
 
@@ -17,7 +17,7 @@ SMODS.Consumable {
         return {vars = {card.ability.extra.payout, tern(G.GAME.kg_blast_zone == nil, card.ability.extra.default_blast, G.GAME.kg_blast_zone), card.ability.extra.default_blast}}
     end,
 
-    atlas = "ConsumPlace",
+    atlas = "500kg_Bomb",
     pos = { x = 0, y = 0 },
     cost = 10,
     unlocked = true,
