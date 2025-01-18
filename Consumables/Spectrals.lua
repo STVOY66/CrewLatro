@@ -14,6 +14,7 @@ SMODS.Consumable {
 
     config = { extra = {payout = 1, denom = 2, default_blast = 26}},
     loc_vars = function(self, info_queue, card)
+        -- Ternary prevents nil value from displaying
         return {vars = {card.ability.extra.payout, tern(G.GAME.kg_blast_zone == nil, card.ability.extra.default_blast, G.GAME.kg_blast_zone), card.ability.extra.default_blast}}
     end,
 
@@ -22,10 +23,10 @@ SMODS.Consumable {
     cost = 10,
     unlocked = true,
     discovered = true,
-    hidden = true,
+    hidden = true, -- Makes it a rare card (a la 'Soul')
     soul_set = "Spectral",
-    soul_rate = 0.03,
-    can_repeat_soul = true,
+    soul_rate = 0.03, -- 3% chance of replacing a card in a spectral booster pack
+    can_repeat_soul = true, -- more than 1 can appear ('Showman')
 
     add_to_deck = function(self, card, card_table, other_card)
         G.E_MANAGER:clear_queue("other")
@@ -43,11 +44,11 @@ SMODS.Consumable {
     use = function(self, card, area, copier)
         local temp_deck = {}
         for k, v in pairs(G.playing_cards) do temp_deck[#temp_deck+1] = v end
-        pseudoshuffle(temp_deck, pseudoseed(pseudoseed("LegalizeNuclearBombs")*os.time()))
-        for count = 1, G.GAME.kg_blast_zone do temp_deck[count]:start_dissolve() end
+        pseudoshuffle(temp_deck, pseudoseed("LegalizeNuclearBombs")) -- Shuffles all cards in temporary deck
+        for count = 1, G.GAME.kg_blast_zone do temp_deck[count]:start_dissolve() end -- Destroys half of the cards
         ease_dollars(G.GAME.kg_blast_zone)
 
-        G.E_MANAGER:add_event(Event({
+        G.E_MANAGER:add_event(Event({ -- Puts destruction on slight delay to allow calculating size of blast zone
             trigger = "after",
             delay = 0.2,
             func = function()
