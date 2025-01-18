@@ -47,5 +47,7 @@ SMODS.Consumable {
                 G.GAME.kg_blast_zone = math.floor(#G.playing_cards / card.ability.extra.denom)
             end
         }), "other")
+
+        G.E_MANAGER:clear_queue(other)
     end
 }
