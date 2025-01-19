@@ -48,9 +48,10 @@ SMODS.Joker {
                 print("Re-rolling...")
                 local valid_cards = {}
                 for k, v in pairs(G.playing_cards) do
-                    if not v.config.center == G.P_CENTERS.m_stone then
+                    -- TODO: Filter out stone cards
+                    -- if not v.config.center == G.P_CENTERS.m_stone then
                         valid_cards[#valid_cards + 1] = v
-                    end
+                    -- end
                 end
                 if valid_cards[1] then
                     local drain_card = pseudorandom_element(valid_cards, pseudoseed("PottyTime"..G.GAME.round_resets.ante))
