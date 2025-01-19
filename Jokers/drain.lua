@@ -1,3 +1,9 @@
+SMODS.Atlas {
+    key = "DownTheDrain",
+    path = "DownTheDrain.png",
+    px = 71, py = 95
+}
+
 SMODS.Joker {
     key = 'drain',
     loc_txt = {
@@ -15,7 +21,7 @@ SMODS.Joker {
     eternal_compat = true,
     perishable_compat = true,
     rarity = 2,
-    atlas = "PlaceJoke",
+    atlas = "DownTheDrain",
     pos = { x = 0, y = 0},
     cost = 8,
 
