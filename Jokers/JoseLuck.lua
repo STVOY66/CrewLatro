@@ -2,13 +2,13 @@
 ------------MOD CODE -------------------------
 
 SMODS.Atlas{
-    key = 'at-JoseLuck', --atlas key
+    key = 'crew_JoseLuck', --atlas key
     path = 'JoseLuck.png', --atlas' path in (yourMod)/assets/1x or (yourMod)/assets/2x
     px = 71, --width of one card
     py = 95 -- height of one card
 }
 SMODS.Joker{
-    key = 'j-JoseLuck', --joker key
+    key = 'crew_JoseLuck', --joker key
     loc_txt = { -- local text
         name = 'Jose Luck',
         text = {
@@ -20,7 +20,7 @@ SMODS.Joker{
             'Be {C:legendary}cool{}',
         }]]
     },
-    atlas = 'at-JoseLuck', --atlas' key
+    atlas = 'crew_JoseLuck', --atlas' key
     rarity = 2, --rarity: 1 = Common, 2 = Uncommon, 3 = Rare, 4 = Legendary
     --soul_pos = { x = 0, y = 0 },
     cost = 2, --cost

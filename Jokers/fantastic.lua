@@ -1,11 +1,11 @@
 SMODS.Atlas {
-    key = "at-Fantastic",
+    key = "crew_Fantastic",
     path = "Fantastic.png",
     px = 71, py = 95
 }
 
 SMODS.Joker {
-    key = 'j-fantastic',
+    key = 'crew_saythatagain',
     loc_txt = {
         name = 'Say that Again...',
         text = {'After playing a {C:attention}Four of a Kind{},',
@@ -16,7 +16,7 @@ SMODS.Joker {
     unlocked = true, discovered = true,
     blueprint_compat = true, eternal_compat = true, perishable_compat = true,
     rarity = 2,
-    atlas = "at-Fantastic",
+    atlas = "crew_Fantastic",
     pos = { x = 0, y = 0},
     cost = 4,
 

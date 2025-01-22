@@ -1,11 +1,11 @@
 SMODS.Atlas {
-    key = "at-DownTheDrain",
+    key = "crew_DownTheDrain",
     path = "DownTheDrain.png",
     px = 71, py = 95
 }
 
 SMODS.Joker {
-    key = 'j-drain',
+    key = 'crew_drain',
     loc_txt = {
         name = 'Down the Drain',
         text = {'If a {V:1}#1#{} {C:attention}Flush{} is discarded,',
@@ -21,7 +21,7 @@ SMODS.Joker {
     eternal_compat = true,
     perishable_compat = true,
     rarity = 2,
-    atlas = "at-DownTheDrain",
+    atlas = "crew_DownTheDrain",
     pos = { x = 0, y = 0},
     cost = 8,
 

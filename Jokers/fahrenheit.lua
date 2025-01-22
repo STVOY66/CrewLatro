@@ -1,11 +1,11 @@
 SMODS.Atlas {
-    key = "at-Fahrenheit452",
+    key = "crew_Fahrenheit452",
     path = "Fahrenheit 452.png",
     px = 71, py = 95
 }
 
 SMODS.Joker {
-    key = 'j-fahrenheit',
+    key = 'crew_fahrenheit',
     loc_txt = {
         name = 'Burn the Books',
         text = {"If first discard is a {C:attention}4{}, {C:attention}5{}, or an {C:attention}Ace{},", "destroy card and gain {C:money}$#1#{}."}
@@ -22,7 +22,7 @@ SMODS.Joker {
     eternal_compat = true,
     perishable_compat = true,
     rarity = 1,
-    atlas = "at-Fahrenheit452",
+    atlas = "crew_Fahrenheit452",
     pos = { x = 0, y = 0 },
     cost = 6,
 

@@ -1,11 +1,11 @@
 SMODS.Atlas {
-    key = "500kg_Bomb",
+    key = "crew_500kg_Bomb",
     path = "500kg_Bomb.png",
     px = 63, py = 93
 }
 
 SMODS.Consumable {
-    key = "500kg",
+    key = "crew_500kg",
     set = "Spectral",
     loc_txt = {
         name = "500kg Bomb",
@@ -18,7 +18,7 @@ SMODS.Consumable {
         return {vars = {card.ability.extra.payout, tern(G.GAME.kg_blast_zone == nil, card.ability.extra.default_blast, G.GAME.kg_blast_zone), card.ability.extra.default_blast}}
     end,
 
-    atlas = "500kg_Bomb",
+    atlas = "crew_500kg_Bomb",
     pos = { x = 0, y = 0 },
     cost = 10,
     unlocked = true,
@@ -29,7 +29,6 @@ SMODS.Consumable {
     can_repeat_soul = true, -- more than 1 can appear ('Showman')
 
     add_to_deck = function(self, card, card_table, other_card)
-        G.E_MANAGER:clear_queue("other")
         G.GAME.kg_blast_zone = math.floor(#G.playing_cards / card.ability.extra.denom)
         print(G.GAME.kg_blast_zone)
     end,
@@ -53,6 +52,7 @@ SMODS.Consumable {
             delay = 0.2,
             func = function()
                 G.GAME.kg_blast_zone = math.floor(#G.playing_cards / card.ability.extra.denom)
+                return true
             end
         }), "other")
 

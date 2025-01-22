@@ -3,10 +3,12 @@ function tern(b, t, f)
 end
 
 SMODS.Atlas {
-    key = "PlaceJoke",
+    key = "crew_PlaceJoke",
     path = "PlaceJoke.png",
     px = 71, py = 95
 }
+
+assert(SMODS.load_file('sounds.lua'))()
 
 local jpath = SMODS.current_mod.path..'Jokers/'
 for _,v in pairs(NFS.getDirectoryItems(jpath)) do
