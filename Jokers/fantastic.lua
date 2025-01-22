@@ -28,7 +28,15 @@ SMODS.Joker {
                       or target_rank == 11 and 'J' or target_rank == 12 and 'Q'
                       or target_rank == 13 and 'K' or target_rank == 14 and 'A'
             print("Rank: "..card_rank)
-            card_suit = pseudorandom_element({'S', 'H', 'D', 'C'}, pseudoseed('ReedRichards'))
+            
+            local valid_suits = {}
+            for k, v in pairs(G.playing_cards) do
+                -- TODO: Filter out stone cards
+                -- if not v.config.center == G.P_CENTERS.m_stone then
+                valid_suits[#valid_suits + 1] = string.sub(v.base.suit, 1, 1)
+                -- end
+            end
+            card_suit = pseudorandom_element(valid_suits, pseudoseed('ReedRichards'))
             print("Suit: "..card_suit)
 
             card_eval_status_text(card, 'extra', nil, nil, nil, {message = "It's Fantastic!", colour = G.C.CHIPS})
