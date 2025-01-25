@@ -8,6 +8,12 @@ SMODS.Atlas {
     px = 71, py = 95
 }
 
+SMODS.Atlas {
+    key = "modicon",
+    path = "angry-stare-gif-atlas.png",
+    px = 128, py = 128,
+}
+
 assert(SMODS.load_file('sounds.lua'))()
 
 local jpath = SMODS.current_mod.path..'Jokers/'
