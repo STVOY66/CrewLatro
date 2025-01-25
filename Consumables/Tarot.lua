@@ -5,7 +5,7 @@ SMODS.Consumable:take_ownership(
         use = function(self, card, area, copier)
             local key_override = nil
             local sticker_override = nil
-            if G.GAME.stake > 3 and pseudorandom('doorstuck') < 0.2 then
+            if G.GAME.stake > 3 and pseudorandom('doorstuck') < 0.1 then
                 key_override = 'j_crew_occupied'
                 sticker_override = {'eternal'}
             end
