@@ -2,6 +2,10 @@ function tern(b, t, f)
     if b then return t else return f end
 end
 
+function inc(v)
+    return v + 1
+end
+
 SMODS.Atlas {
     key = "crew_PlaceJoke",
     path = "PlaceJoke.png",
