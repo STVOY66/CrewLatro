@@ -8,13 +8,17 @@ SMODS.Joker {
     key = 'crew_hogwild',
     loc_txt = {
         name = 'Hog Infinite',
-        text = {"Retriggers retriggered cards that", "retrigger cards."}
+        text = {"{C:green}#1# in #2#{} chance to retrigger scoring cards", "a maximum of #3# additional times."}
     },
 
-    config = { extra = {triggers = 2}},
+    loc_vars = function(self, info_queue, card)
+        return {vars = {card.ability.extra.num, card.ability.extra.denom, card.ability.extra.max_trig}}
+    end,
+
+    config = { extra = {num = (G.GAME and G.GAME.probabilities.normal or 1), denom = 2, max_trig = 5}},
     unlocked = true,
     discovered = true,
-    blueprint_compat = false,
+    blueprint_compat = true,
     eternal_compat = true,
     perishable_compat = true,
     rarity = 2,
@@ -23,8 +27,32 @@ SMODS.Joker {
     cost = 5,
 
     calculate = function(self, card, context)
-        if context.before and not context.blueprint then
-            if G.GAME.current_round.hogwild then print("Triggered!") end
+        -- pseudorandom("HOGINFINITE") < (G.GAME.probabilities.normal/card.ability.extra.denom) 
+        local trig_proc = pseudorandom("HAWGWILD")
+        local trig_denom = card.ability.extra.denom
+        local trig_num = card.ability.extra.num
+        if context.repetition and context.cardarea == G.play and (trig_proc < (trig_num/trig_denom)) then
+            local trigs = 0
+            local weights = {}
+            for i = 1, card.ability.extra.max_trig do
+                if i == 1 then weights[i] = trig_num/trig_denom
+                else weights[i] = weights[i-1]/(tern(trig_denom <= 1, 2, trig_denom)) end
+            end
+            print(weights)
+
+            for i = card.ability.extra.max_trig, 1, -1 do
+                if trig_proc < weights[i] then
+                    trigs = i
+                    break
+                end
+            end
+            print(trigs)
+
+            card_eval_status_text(card, 'extra', nil, nil, nil, {message = "HAWG WILD!"})
+            return {
+                repetitions = trigs,
+                card = context.other_card
+            }
         end
     end
 }
