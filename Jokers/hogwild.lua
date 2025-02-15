@@ -48,9 +48,11 @@ SMODS.Joker {
             end
             print(trigs)
 
-            card_eval_status_text(card, 'extra', nil, nil, nil, {message = "HAWG WILD!"})
+            card_eval_status_text(card, 'extra', nil, nil, nil, {message = "HAWG WILD!", sound = "crew_hawg_wild"})
+            
             return {
                 repetitions = trigs,
+                message = "Again!",
                 card = context.other_card
             }
         end

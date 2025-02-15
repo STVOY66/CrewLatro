@@ -22,3 +22,8 @@ SMODS.Sound {
     key = 'crew_pickle_no_good',
     path = 'pickle_no_good.ogg',
 }
+
+SMODS.Sound {
+    key = 'crew_hawg_wild',
+    path = 'hog_wild.ogg',
+}
