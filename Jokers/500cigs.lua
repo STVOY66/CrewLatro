@@ -12,7 +12,7 @@ SMODS.Joker {
                 "{C:inactive}(Currently {C:mult}#3#{C:inactive} Mult and {C:chips}#4#{C:inactive} Chips)"}
     },
     
-    config = { extra = {m_mod = 1, c_mod = 5, t_mult = 0, t_chips = 0, cigs = 500}},
+    config = { extra = {m_mod = 3, c_mod = 5, t_mult = 0, t_chips = 0, cigs = 500}},
     loc_vars = function(self, info_queue, card)
         return {vars = {card.ability.extra.m_mod,
                         card.ability.extra.c_mod,
