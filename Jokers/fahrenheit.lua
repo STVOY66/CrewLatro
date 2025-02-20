@@ -31,7 +31,7 @@ SMODS.Joker {
             if not context.other_card.debuff 
             and (context.other_card:get_id() == 4 or context.other_card:get_id() == 5 or context.other_card:get_id() == 14) then
                 ease_dollars(card.ability.extra.payout)
-                return { message = "BURNT!", remove = true, card = self}
+                return { message = "BURNT!", remove = true, card = card}
             end
         end
     end
