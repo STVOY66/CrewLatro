@@ -21,3 +21,53 @@ SMODS.Consumable:take_ownership(
     },
     true
 )
+
+SMODS.Atlas {
+    key = "crew_Ignorant",
+    path = "Ignorant.png",
+    px = 63, py = 93
+}
+
+SMODS.Consumable {
+    key = "crew_waxhead",
+    set = "Tarot",
+    loc_txt = {
+        name = "The Ignorant",
+        text = {"Add a {C:attention}random seal{},", "to {C:attention}#1#{} selected", "cards in your hand."}
+    },
+
+    config = { extra = {max_select = 2}},
+    loc_vars = function(self, info_queue, card)
+        -- Ternary prevents nil value from displaying
+        return {vars = {card.ability.extra.max_select}}
+    end,
+
+    atlas = "crew_Ignorant",
+    pos = { x = 0, y = 0 },
+    cost = 3,
+    unlocked = true,
+    discovered = true,
+    hidden = false, -- Makes it a rare card (a la 'Soul')
+
+    can_use = function(self, card)
+        if #G.hand.highlighted > 0 and #G.hand.highlighted <= card.ability.extra.max_select then
+            return true
+        else return false end
+    end,
+
+    use = function(self, card, area, copier)
+        for k, v in ipairs(G.hand.highlighted) do
+            G.E_MANAGER:add_event(Event({func = function()
+                play_sound('tarot1')
+                card:juice_up(0.3, 0.5)
+                return true end }))
+            
+            G.E_MANAGER:add_event(Event({trigger = 'after',delay = 0.1,func = function()
+                v:set_seal(SMODS.poll_seal({guaranteed = true}))
+                return true end }))
+            
+            delay(0.5)
+            G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.2,func = function() G.hand:remove_from_highlighted(v, false); return true end }))
+        end
+    end
+}
