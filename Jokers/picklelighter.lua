@@ -27,13 +27,13 @@ SMODS.Joker {
 
     calculate = function(self, card, context)
         if context.joker_main then
-            local mul = card.ability.extra.mult_mod
-            local mess = "pickle good! :D"
-            local ogg = "crew_picklesound"
+            local mul = card.ability.extra.mult_mod * -1
+            local mess = "pickle no good D:"
+            local ogg = "crew_pickle_no_good"
             if pseudorandom('pickl') < (G.GAME.probabilities.normal/card.ability.extra.weight) then
                 mul = mul * -1
-                mess = "pickle no good D:"
-                ogg = "crew_pickle_no_good"
+                mess = "pickle good! :D"
+                ogg = "crew_picklesound"
             end
             card_eval_status_text(card, 'extra', nil, nil, nil, {message = mess, colour = G.C.MULT, sound = ogg})
             return { mult = mul }
