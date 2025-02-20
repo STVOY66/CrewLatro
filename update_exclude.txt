@@ -1,3 +1,4 @@
 update.bat
 update_exclude.txt
+README.md
 \_cutjokers\

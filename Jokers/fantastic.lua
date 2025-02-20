@@ -39,6 +39,7 @@ SMODS.Joker {
 
             card_eval_status_text(card, 'extra', nil, nil, nil, {message = "It's Fantastic!", colour = G.C.CHIPS})
             create_playing_card({front = G.P_CARDS[card_suit..'_'..card_rank], center = G.P_CENTERS.c_base}, G.hand, nil, nil, nil)
+            playing_card_joker_effects({true})
         end
     end
 }
