@@ -1,10 +1,14 @@
-function tern(b, t, f)
+CREWLIB = CREWLIB or {}
+
+CREWLIB.tern = function(b, t, f)
     if b then return t else return f end
 end
 
-function inc(v)
+CREWLIB.inc = function(v)
     return v + 1
 end
+
+CREWLIB.id_rank = {'A', '2', '3', '4', '5', '6', '7', '8', '9', 'T', 'J', 'Q', 'K', 'A'}
 
 SMODS.Atlas {
     key = "crew_PlaceJoke",

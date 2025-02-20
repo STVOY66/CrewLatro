@@ -23,10 +23,8 @@ SMODS.Joker {
     calculate = function(self, card, context)
         if context.before and next(context.poker_hands["Four of a Kind"]) then
             print("Triggered!")
-            target_rank = context.scoring_hand[1]:get_id()
-            card_rank = target_rank < 10 and tostring(target_rank) or target_rank == 10 and 'T'
-                      or target_rank == 11 and 'J' or target_rank == 12 and 'Q'
-                      or target_rank == 13 and 'K' or target_rank == 14 and 'A'
+            local card_rank = CREWLIB.id_rank[context.scoring_hand[1]:get_id()]
+
             print("Rank: "..card_rank)
             
             local valid_suits = {}
@@ -36,7 +34,7 @@ SMODS.Joker {
                 valid_suits[#valid_suits + 1] = string.sub(v.base.suit, 1, 1)
                 -- end
             end
-            card_suit = pseudorandom_element(valid_suits, pseudoseed('ReedRichards'))
+            local card_suit = pseudorandom_element(valid_suits, pseudoseed('ReedRichards'))
             print("Suit: "..card_suit)
 
             card_eval_status_text(card, 'extra', nil, nil, nil, {message = "It's Fantastic!", colour = G.C.CHIPS})

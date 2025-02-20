@@ -36,7 +36,7 @@ SMODS.Joker {
             local weights = {}
             for i = 1, card.ability.extra.max_trig do
                 if i == 1 then weights[i] = trig_num/trig_denom
-                else weights[i] = weights[i-1]/(tern(trig_denom <= 1, 2, trig_denom)) end
+                else weights[i] = weights[i-1]/(CREWLIB.tern(trig_denom <= 1, 2, trig_denom)) end
             end
             print(weights)
 

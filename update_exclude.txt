@@ -1,2 +1,3 @@
 update.bat
 update_exclude.txt
+\_cutjokers\
