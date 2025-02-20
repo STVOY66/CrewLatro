@@ -38,5 +38,10 @@ SMODS.Joker {
             card_eval_status_text(card, 'extra', nil, nil, nil, {message = mess, colour = G.C.MULT, sound = ogg})
             return { mult = mul }
         end
+    end,
+
+    set_badges = function(self, card, badges)
+        badges[#badges+1] = create_badge("Art: GravyWizard", G.C.GREY, G.C.WHITE, 0.8 )
+        -- table.insert(badges, 1, create_badge("Art: DemarcoCooley", G.C.GREY, G.C.WHITE, 0.8 ))
     end
 }

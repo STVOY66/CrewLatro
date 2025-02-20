@@ -49,6 +49,11 @@ SMODS.Joker{
         --whether or not this card is in the pool, return true if it is, return false if its not
         return true
     end,
+
+    set_badges = function(self, card, badges)
+      badges[#badges+1] = create_badge("Art: DemarcoCooley", G.C.GREY, G.C.WHITE, 0.8 )
+      -- table.insert(badges, 1, create_badge("Art: DemarcoCooley", G.C.GREY, G.C.WHITE, 0.8 ))
+    end
 }
 
 

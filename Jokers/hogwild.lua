@@ -56,5 +56,10 @@ SMODS.Joker {
                 card = context.other_card
             }
         end
+    end,
+
+    set_badges = function(self, card, badges)
+        badges[#badges+1] = create_badge("Art: GravyWizard", G.C.GREY, G.C.WHITE, 0.8 )
+        -- table.insert(badges, 1, create_badge("Art: DemarcoCooley", G.C.GREY, G.C.WHITE, 0.8 ))
     end
 }

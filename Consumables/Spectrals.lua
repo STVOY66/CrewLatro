@@ -9,13 +9,13 @@ SMODS.Consumable {
     set = "Spectral",
     loc_txt = {
         name = "500kg Bomb",
-        text = {"Randomly destroys {C:attention}half{} {C:inactive}(#2#){} of the cards from the deck,", "pays {C:money}$#1#{} per destroyed card"}
+        text = {"Randomly destroys {C:attention}half{} {C:inactive}(#2#){},", "of the cards from the deck,", "pays {C:money}$#1#{} per destroyed card"}
     },
 
     config = { extra = {payout = 1, denom = 2, default_blast = 26}},
     loc_vars = function(self, info_queue, card)
         -- Ternary prevents nil value from displaying
-        return {vars = {card.ability.extra.payout, tern(G.GAME.kg_blast_zone == nil, card.ability.extra.default_blast, G.GAME.kg_blast_zone), card.ability.extra.default_blast}}
+        return {vars = {card.ability.extra.payout, CREWLIB.tern(G.GAME.kg_blast_zone == nil, card.ability.extra.default_blast, G.GAME.kg_blast_zone), card.ability.extra.default_blast}}
     end,
 
     atlas = "crew_500kg_Bomb",
@@ -55,6 +55,10 @@ SMODS.Consumable {
                 return true
             end
         }), "other")
+    end,
 
+    set_badges = function(self, card, badges)
+        badges[#badges+1] = create_badge("Art: DemarcoCooley", G.C.GREY, G.C.WHITE, 0.8 )
+        -- table.insert(badges, 1, create_badge("Art: DemarcoCooley", G.C.GREY, G.C.WHITE, 0.8 ))
     end
 }

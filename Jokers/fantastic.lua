@@ -41,5 +41,10 @@ SMODS.Joker {
             create_playing_card({front = G.P_CARDS[card_suit..'_'..card_rank], center = G.P_CENTERS.c_base}, G.hand, nil, nil, nil)
             playing_card_joker_effects({true})
         end
+    end,
+
+    set_badges = function(self, card, badges)
+        badges[#badges+1] = create_badge("Art: DemarcoCooley", G.C.GREY, G.C.WHITE, 0.8 )
+        -- table.insert(badges, 1, create_badge("Art: DemarcoCooley", G.C.GREY, G.C.WHITE, 0.8 ))
     end
 }
