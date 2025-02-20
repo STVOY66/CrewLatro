@@ -56,6 +56,7 @@ SMODS.Joker {
                     return true
                 end
             }))
+            return {message = "Snip!"}
         end
     end
 }
