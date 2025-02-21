@@ -33,3 +33,11 @@ local cpath = SMODS.current_mod.path..'Consumables/'
 for _,v in pairs(NFS.getDirectoryItems(cpath)) do
     assert(SMODS.load_file('Consumables/'..v))()
 end
+
+SMODS.current_mod.description_loc_vars = function(self)
+	return {
+		scale = 2, -- Change text scale, default 1
+		text_colour = HEX('FFFFFFFF'), -- Default text colour if no colour control is active
+		background_colour = HEX('00000000')
+	}
+end
