@@ -27,3 +27,13 @@ SMODS.Sound {
     key = 'crew_hawg_wild',
     path = 'hog_wild.ogg',
 }
+
+SMODS.Sound {
+    key = 'crew_poop',
+    path = 'poop2.ogg',
+}
+
+SMODS.Sound {
+    key = 'crew_flush',
+    path = 'flush1.ogg',
+}
