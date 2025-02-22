@@ -29,7 +29,7 @@ SMODS.Joker {
     cost = 10,
 
     calculate = function(self, card, context)
-        if context.before then
+        if context.before and not context.blueprint then
             card.ability.extra.tot = card.ability.extra.tot + card.ability.extra.mod
             return {
                 message = 'Upgrade!'

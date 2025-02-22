@@ -54,7 +54,7 @@ SMODS.Joker {
             }
         end
 
-        if context.end_of_round and G.GAME.current_round.hands_left == 0 then
+        if context.end_of_round and G.GAME.current_round.hands_left == 0 and not context.blueprint then
             G.E_MANAGER:add_event(Event({
                 func = function()
                     play_sound('tarot1')

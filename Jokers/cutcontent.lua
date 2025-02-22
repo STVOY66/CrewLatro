@@ -18,7 +18,7 @@ SMODS.Joker {
     end,
     
     unlocked = true, discovered = true,
-    blueprint_compat = true, eternal_compat = true, perishable_compat = true,
+    blueprint_compat = false, eternal_compat = true, perishable_compat = true,
     rarity = 3,
     atlas = "crew_CutContent",
     pos = {x = 1, y = 0},

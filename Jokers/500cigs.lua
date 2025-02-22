@@ -32,7 +32,7 @@ SMODS.Joker {
     cost = 5,
 
     calculate = function(self, card, context)
-        if context.before and not context.debuffed_hand and not card.debuff then
+        if context.before and not context.debuffed_hand and not card.debuff and not context.blueprint then
             this_joke = card.ability.extra
             this_joke.cigs = this_joke.cigs - 1
             card_eval_status_text(card, 'extra', nil, nil, nil, {message = "-1 Cigarette!"})

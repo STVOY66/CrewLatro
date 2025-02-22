@@ -26,6 +26,8 @@ SMODS.Joker {
     pos = { x = 0, y = 0 },
     cost = 5,
 
+
+    -- TODO: Optimize weight table generation.
     calculate = function(self, card, context)
         -- pseudorandom("HOGINFINITE") < (G.GAME.probabilities.normal/card.ability.extra.denom) 
         local trig_proc = pseudorandom("HAWGWILD")
