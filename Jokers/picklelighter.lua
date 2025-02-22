@@ -35,7 +35,7 @@ SMODS.Joker {
                 mess = "pickle good! :D"
                 ogg = "crew_picklesound"
             end
-            card_eval_status_text(card, 'extra', nil, nil, nil, {message = mess, colour = G.C.MULT, sound = ogg})
+            card_eval_status_text(card, 'extra', nil, nil, nil, {message = mess, colour = G.C.MULT, sound = ogg, volume = 1.2})
             return { mult = mul }
         end
     end,

@@ -44,6 +44,7 @@ SMODS.Joker {
                         message = "Winner!",
                         message_card = card,
                         sound = 'crew_gamble_winner',
+                        volume = 0.4,
                         func = function()
                             card.ability.extra.trigger = true
                             G.E_MANAGER:add_event(Event({
@@ -59,6 +60,7 @@ SMODS.Joker {
                     return {
                         message = 'Aw dang it!',
                         message_card = card,
+                        volume = 0.40,
                         sound = 'crew_gamble_buzzer'
                     }
                 end

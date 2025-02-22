@@ -49,6 +49,7 @@ SMODS.Joker {
             return {
                 message = "OHHHH MY GAAHHHHHD",
                 sound = 'crew_clutch',
+                volume = 0.8,
                 Xmult_mod = mult^(card.ability.extra.expo-1)
             }
         end
