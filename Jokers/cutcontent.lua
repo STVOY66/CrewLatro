@@ -33,14 +33,6 @@ SMODS.Joker {
         end
 
         if context.after and #context.scoring_hand == 1 then
-            local valid_suits = {}
-            for k, v in pairs(G.playing_cards) do
-                -- TODO: Filter out stone cards
-                -- if not v.config.center == G.P_CENTERS.m_stone then
-                valid_suits[#valid_suits + 1] = string.sub(v.base.suit, 1, 1)
-                -- end
-            end
-            local new_suit = pseudorandom_element(valid_suits, pseudoseed('CUTTINGROOM'))
             local new_rank = CREWLIB.id_rank[context.scoring_hand[1]:get_id() - 1]
 
             G.E_MANAGER:add_event(Event({
@@ -51,8 +43,8 @@ SMODS.Joker {
                 func = function()
                     play_sound('tarot1')
                     context.scoring_hand[1]:start_dissolve()
-                    create_playing_card({front = G.P_CARDS[pseudorandom_element(valid_suits, pseudoseed('CUTTINGROOM'))..'_'..new_rank], center = G.P_CENTERS.c_base}, G.hand, nil, nil, nil)
-                    create_playing_card({front = G.P_CARDS[pseudorandom_element(valid_suits, pseudoseed('CUTTINGROOM'))..'_'..new_rank], center = G.P_CENTERS.c_base}, G.hand, nil, nil, nil)
+                    create_playing_card({front = G.P_CARDS[CREWLIB.poll_suit(true, pseudoseed('CuttingRoom'), true)..'_'..new_rank], center = G.P_CENTERS.c_base}, G.hand, nil, nil, nil)
+                    create_playing_card({front = G.P_CARDS[CREWLIB.poll_suit(true, pseudoseed('CuttingRoom'), true)..'_'..new_rank], center = G.P_CENTERS.c_base}, G.hand, nil, nil, nil)
                     return true
                 end
             }))

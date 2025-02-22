@@ -34,10 +34,10 @@ SMODS.Joker {
 
     calculate = function(self, card, context)
         if context.pre_discard and next(evaluate_poker_hand(G.hand.highlighted)["Flush"]) and not context.blueprint then
-            local valid_suit = false
+            local valid_suit = true
             for k, v in pairs(G.hand.highlighted) do
-                if v:is_suit(G.GAME.current_round.drain_card.suit) then
-                    valid_suit = true
+                if not v:is_suit(G.GAME.current_round.drain_card.suit) then
+                    valid_suit = false
                     break
                 end
             end
@@ -45,18 +45,9 @@ SMODS.Joker {
                 card.ability.extra.total = card.ability.extra.total + card.ability.extra.mod
                 card_eval_status_text(card, 'extra', nil, nil, nil, {message = "Upgrade!"})
 
-                print("Re-rolling...")
-                local valid_cards = {}
-                for k, v in pairs(G.playing_cards) do
-                    -- TODO: Filter out stone cards
-                    -- if not v.config.center == G.P_CENTERS.m_stone then
-                        valid_cards[#valid_cards + 1] = v
-                    -- end
-                end
-                if valid_cards[1] then
-                    local drain_card = pseudorandom_element(valid_cards, pseudoseed("PottyTime"..G.GAME.round_resets.ante))
-                    G.GAME.current_round.drain_card.suit = drain_card.base.suit
-                end
+                local drain_suit = CREWLIB.poll_suit(true, pseudoseed("PottyTime"..G.GAME.round_resets.ante))
+                G.GAME.current_round.drain_card.suit = drain_suit
+                -- print("Re-rolling...")
             end
         end
 
@@ -65,7 +56,7 @@ SMODS.Joker {
                 message = "+"..card.ability.extra.total,
                 vars = {card.ability.extra.total},
                 mult_mod = card.ability.extra.total,
-                card = self
+                card = card
             }
         end
     end,
@@ -79,21 +70,17 @@ SMODS.Joker {
 local igo = Game.init_game_object
 function Game:init_game_object()
   local ret = igo(self)
-  ret.current_round.drain_card = { suit = 'Spades' } 
+  ret.current_round.drain_card = { suit = 'Spades' }
   return ret
 end
 
 function SMODS.current_mod.reset_game_globals(run_start)
-    -- G.GAME.current_round.drain_card = { suit = 'Spades' }
-    -- local valid_cards = {}
-    -- for k, v in pairs(G.playing_cards) do
-    --     if not v.config.center == G.P_CENTERS.m_stone then
-    --         valid_cards[#valid_cards + 1] = v
-    --     end
-    -- end
-    -- if valid_cards[1] then
-    --     local drain_card = pseudorandom_element(valid_cards, pseudoseed("PottyTime"..G.GAME.round_resets.ante))
-    --     print(drain_card.suit)
-    --     G.GAME.current_round.drain_card.suit = drain_card.suit
-    -- end
+    if #SMODS.find_card('j_crew_drain') == 0 then
+        -- print("Triggered!")
+        G.GAME.current_round.drain_card = { suit = 'Spades' }
+        local polled_suit = CREWLIB.poll_suit(true, pseudoseed("PottyTime"..G.GAME.round_resets.ante))
+        if polled_suit then
+            G.GAME.current_round.drain_card.suit = polled_suit
+        end
+    end
 end

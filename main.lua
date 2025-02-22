@@ -10,6 +10,31 @@ end
 
 CREWLIB.id_rank = {'A', '2', '3', '4', '5', '6', '7', '8', '9', 'T', 'J', 'Q', 'K', 'A'}
 
+CREWLIB.poll_suit = function(in_deck, seed, first_char)
+    local valid_cards = {}
+    if not in_deck then
+        valid_cards = {'Spades', 'Hearts', 'Clubs', 'Diamonds'}
+    else
+        for k, v in pairs(G.playing_cards) do
+            -- TODO: Filter out stone cards
+            -- if v.config.center ~= G.P_CENTERS.m_stone then
+                valid_cards[#valid_cards + 1] = v
+            -- end
+        end
+    end
+
+    if valid_cards[1] then
+        local pick_suit = pseudorandom_element(valid_cards, seed).base.suit
+        if not first_char then
+            print(pick_suit)
+            return pick_suit
+        else
+            print(string.sub(pick_suit,1,1))
+            return string.sub(pick_suit,1,1)
+        end
+    else return false end
+end
+
 SMODS.Atlas {
     key = "crew_PlaceJoke",
     path = "PlaceJoke.png",

@@ -22,19 +22,11 @@ SMODS.Joker {
 
     calculate = function(self, card, context)
         if context.before and next(context.poker_hands["Four of a Kind"]) then
-            print("Triggered!")
+            -- print("Triggered!")
             local card_rank = CREWLIB.id_rank[context.scoring_hand[1]:get_id()]
 
             print("Rank: "..card_rank)
-            
-            local valid_suits = {}
-            for k, v in pairs(G.playing_cards) do
-                -- TODO: Filter out stone cards
-                -- if not v.config.center == G.P_CENTERS.m_stone then
-                valid_suits[#valid_suits + 1] = string.sub(v.base.suit, 1, 1)
-                -- end
-            end
-            local card_suit = pseudorandom_element(valid_suits, pseudoseed('ReedRichards'))
+            local card_suit = CREWLIB.poll_suit(true, pseudoseed('ReedRichards'), true)
             print("Suit: "..card_suit)
 
             card_eval_status_text(card, 'extra', nil, nil, nil, {message = "It's Fantastic!", colour = G.C.CHIPS})
