@@ -43,7 +43,7 @@ SMODS.Joker {
             end
             if valid_suit then
                 card.ability.extra.total = card.ability.extra.total + card.ability.extra.mod
-                card_eval_status_text(card, 'extra', nil, nil, nil, {message = "Upgrade!", sound = "crew_flush", volume = 1.3})
+                card_eval_status_text(card, 'extra', nil, nil, nil, {message = "Upgrade!", sound = "crew_flush", volume = 1})
 
                 local drain_suit = CREWLIB.poll_suit(true, pseudoseed("PottyTime"..G.GAME.round_resets.ante))
                 G.GAME.current_round.drain_card.suit = drain_suit

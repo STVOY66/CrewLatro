@@ -55,7 +55,7 @@ SMODS.Joker {
                         return true
                     end
                 }))
-                card_eval_status_text(card, 'extra', nil, nil, nil, {message = "Urgghh...", sound = "crew_poop", volume = 1})
+                card_eval_status_text(card, 'extra', nil, nil, nil, {message = "Urgghh...", sound = "crew_poop", volume = 0.5})
             end
         end
         
