@@ -13,8 +13,8 @@ SMODS.Joker{
         name = 'Jose Luck',
         text = {
           'When hand is played,',
-          '{C:green}1 in #3#{} chance for {X:mult,C:white} X#1# {}',
-          '{C:green}1 in #3#{} chance for {X:mult,C:white} X#2# {}',
+          '{C:green}#4# in #3#{} chance for {X:mult,C:white} X#1# {}',
+          '{C:green}#4# in #3#{} chance for {X:mult,C:white} X#2# {}',
         },
         --[[unlock = {
             'Be {C:legendary}cool{}',
@@ -32,22 +32,20 @@ SMODS.Joker{
     pos = {x = 0, y = 0}, --position in atlas, starts at 0, scales by the atlas' card size (px and py): {x = 1, y = 0} would mean the sprite is 71 pixels to the right
     config = { 
       extra = {
-        Xmult = 0.01, Xmult2 = 10, odds = 10
+        Xmult = 0.01, Xmult2 = 10, odds = 10, prob = (G.GAME and G.GAME.probabilities.normal or 1)
       }
     },
+    
     loc_vars = function(self,info_queue,center)
-        return {vars = {center.ability.extra.Xmult, center.ability.extra.Xmult2, center.ability.extra.odds}} --#1# is replaced with card.ability.extra.Xmult
+        return {vars = {card.ability.extra.Xmult, card.ability.extra.Xmult2, card.ability.extra.odds, card.ability.extra.prob}} --#1# is replaced with card.ability.extra.Xmult
     end,
+
     calculate = function(self,card,context)
-        if context.joker_main and pseudorandom('JoseLuck') < 1 / card.ability.extra.odds then
+        if context.joker_main and pseudorandom('JoseLuck') < card.ability.extra.prob / card.ability.extra.odds then
             return {
               xmult = pseudorandom('joseluckreturn') > 0.5 and card.ability.extra.Xmult or card.ability.extra.Xmult2
             }
         end
-    end,
-    in_pool = function(self,wawa,wawa2)
-        --whether or not this card is in the pool, return true if it is, return false if its not
-        return true
     end,
 
     set_badges = function(self, card, badges)
