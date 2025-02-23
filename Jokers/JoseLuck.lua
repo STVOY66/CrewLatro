@@ -36,7 +36,7 @@ SMODS.Joker{
       }
     },
     
-    loc_vars = function(self,info_queue,center)
+    loc_vars = function(self, info_queue, card)
         return {vars = {card.ability.extra.Xmult, card.ability.extra.Xmult2, card.ability.extra.odds, card.ability.extra.prob}} --#1# is replaced with card.ability.extra.Xmult
     end,
 
