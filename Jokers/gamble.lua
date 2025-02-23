@@ -14,13 +14,12 @@ SMODS.Joker {
     },
 
     config = { extra = {
-        numer = (G.GAME and G.GAME.probabilities.normal or 1),
         denom = 20,
         payout = 100,
         trigger = false
     }},
     loc_vars = function(self, info_queue, card)
-        return {vars = {card.ability.extra.numer,
+        return {vars = {''..(G.GAME and G.GAME.probabilities.normal or 1),
                         card.ability.extra.denom,
                         card.ability.extra.payout}}
     end,

@@ -12,10 +12,10 @@ SMODS.Joker {
     },
 
     loc_vars = function(self, info_queue, card)
-        return {vars = {card.ability.extra.num, card.ability.extra.denom, card.ability.extra.max_trig}}
+        return {vars = {''..(G.GAME and G.GAME.probabilities.normal or 1), card.ability.extra.denom, card.ability.extra.max_trig}}
     end,
 
-    config = { extra = {num = (G.GAME and G.GAME.probabilities.normal or 1), denom = 2, max_trig = 5}},
+    config = { extra = {denom = 2, max_trig = 5}},
     unlocked = true,
     discovered = true,
     blueprint_compat = true,
@@ -32,7 +32,7 @@ SMODS.Joker {
         -- pseudorandom("HOGINFINITE") < (G.GAME.probabilities.normal/card.ability.extra.denom) 
         local trig_proc = pseudorandom("HAWGWILD")
         local trig_denom = card.ability.extra.denom
-        local trig_num = card.ability.extra.num
+        local trig_num = G.GAME.probabilities.normal
         if context.repetition and context.cardarea == G.play and (trig_proc < (trig_num/trig_denom)) then
             local trigs = 0
             local weights = {}

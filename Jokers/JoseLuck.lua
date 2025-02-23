@@ -32,16 +32,16 @@ SMODS.Joker{
     pos = {x = 0, y = 0}, --position in atlas, starts at 0, scales by the atlas' card size (px and py): {x = 1, y = 0} would mean the sprite is 71 pixels to the right
     config = { 
       extra = {
-        Xmult = 0.01, Xmult2 = 10, odds = 10, prob = (G.GAME and G.GAME.probabilities.normal or 1)
+        Xmult = 0.01, Xmult2 = 10, odds = 10
       }
     },
     
     loc_vars = function(self, info_queue, card)
-        return {vars = {card.ability.extra.Xmult, card.ability.extra.Xmult2, card.ability.extra.odds, card.ability.extra.prob}} --#1# is replaced with card.ability.extra.Xmult
+        return {vars = {card.ability.extra.Xmult, card.ability.extra.Xmult2, card.ability.extra.odds, ""..(G.GAME and G.GAME.probabilities.normal or 1)}} --#1# is replaced with card.ability.extra.Xmult
     end,
 
     calculate = function(self,card,context)
-        if context.joker_main and pseudorandom('JoseLuck') < card.ability.extra.prob / card.ability.extra.odds then
+        if context.joker_main and pseudorandom('JoseLuck') < G.GAME.probabilities.normal / card.ability.extra.odds then
             return {
               xmult = pseudorandom('joseluckreturn') > 0.5 and card.ability.extra.Xmult or card.ability.extra.Xmult2
             }

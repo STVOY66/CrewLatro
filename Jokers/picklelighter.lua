@@ -8,10 +8,10 @@ SMODS.Joker {
     key = 'crew_picklelighter',
     loc_txt = {
         name = 'pickle',
-        text = {"pickle either good ({C:mult}+#1#{} Mult)", "or no good ({C:mult}-#1#{} Mult)", "{C:green}1 in 2"}
+        text = {"pickle either good ({C:mult}+#1#{} Mult)", "or no good ({C:mult}-#1#{} Mult)", "{C:green}#2# in 2"}
     },
     loc_vars = function(self, info_queue, card)
-        return {vars = {card.ability.extra.mult_mod}}
+        return {vars = {card.ability.extra.mult_mod, ""..(G.GAME and G.GAME.probabilities.normal or 1)}}
     end,
 
     config = { extra = {mult_mod = 15, weight = 3}},
