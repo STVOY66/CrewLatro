@@ -1,13 +1,13 @@
 SMODS.Atlas {
-    key = "crew_DracFlow",
-    path = "DracFlow.png",
+    key = "crew_AllIn",
+    path = "AllIn.png",
     px = 71, py = 95
 }
 
 SMODS.Voucher {
-    key = "crew_drac",
+    key = "crew_bet",
     loc_txt = {
-        name = 'Dracula',
+        name = 'All In',
         text = {"{C:attention}+#1#{} Ante,", "{C:chips}+#2#{} hand", "each round."}
     },
 
@@ -22,7 +22,7 @@ SMODS.Voucher {
 
     unlocked = true,
     discovered = true,
-    atlas = "crew_DracFlow",
+    atlas = "crew_AllIn",
     pos = { x = 0, y = 0 },
     cost = 5,
 
