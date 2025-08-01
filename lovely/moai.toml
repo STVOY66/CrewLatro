@@ -7,7 +7,7 @@ dump_lua = true
 
 [vars]
 numerator = "1"
-denominator= "20"
+denominator= "1"
 
 # Inject one or more lines of code before, after, or at (replacing) a line which matches
 # the provided pattern.
@@ -22,9 +22,9 @@ match_indent = true
 payload = '''
 
 if self.ability.name:find('Spectral') then
-    --if pseudorandom("MoaiTime") < ({{lovely:numerator}}/{{lovely:denominator}}) then
+    if G.GAME.stake >= 3 and (pseudorandom("MoaiTime") < ({{lovely:numerator}}/{{lovely:denominator}})) then
         G.GAME.moai_time = true
-    --end
+    else G.GAME.moai_time = false end
 else G.GAME.moai_time = false end
 
 local moai_time = G.GAME.moai_time

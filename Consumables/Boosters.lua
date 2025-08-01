@@ -4,7 +4,7 @@ SMODS.Booster:take_ownership_by_kind("Spectral", {
         if G.GAME.moai_time then
             card_to_create.soulable = false
             card_to_create.key = "c_crew_dumdum"
-            if pseudorandom("bombtime") < (1/40) then card_to_create.key = "c_crew_500kg" end
+            if (pseudorandom("bombtime") < (1/40)) and G.GAME.stake > 3 then card_to_create.key = "c_crew_500kg" end
         end
         return card_to_create
     end

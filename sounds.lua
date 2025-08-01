@@ -4,6 +4,11 @@ SMODS.Sound {
 }
 
 SMODS.Sound {
+    key = 'crew_moaioh',
+    path = 'moai.ogg',
+}
+
+SMODS.Sound {
     key = 'crew_gamble_buzzer',
     path = 'gamble_buzzer.ogg',
 }

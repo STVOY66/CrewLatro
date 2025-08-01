@@ -78,6 +78,7 @@ SMODS.Consumable {
     },
     config = { extra = { modCards = 100 }},
     loc_vars = function(self, info_queue, card)
+        info_queue[#info_queue + 1] = G.P_CENTERS.m_stone
         return {vars = {card.ability.extra.modCards}}
     end,
 
@@ -87,6 +88,15 @@ SMODS.Consumable {
     unlocked = true,
     discovered = true,
     hidden = false,
+
+    can_use = function(self, card) return true end,
+
+    use = function(self, card, area)
+        for i = 1, 100 do
+            create_playing_card({center = G.P_CENTERS.m_stone}, G.hand, nil, nil, nil)
+        end
+        play_sound('crew_moaioh')
+    end,
 
     in_pool = function(self, args)
         return false
