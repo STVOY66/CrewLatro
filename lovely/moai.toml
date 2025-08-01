@@ -1,0 +1,66 @@
+[manifest]
+version = "1.0.0"
+priority = -1
+dump_lua = true
+
+# Define a var substitution rule. This searches for lines that contain {{lovely:var_name}}
+
+[vars]
+numerator = "1"
+denominator= "20"
+
+# Inject one or more lines of code before, after, or at (replacing) a line which matches
+# the provided pattern.
+
+[[patches]]
+[patches.pattern]
+#Checks if Moai should appear
+target = "card.lua"
+pattern = "self.opening = true"
+position = "after"
+match_indent = true
+payload = '''
+
+if self.ability.name:find('Spectral') then
+    --if pseudorandom("MoaiTime") < ({{lovely:numerator}}/{{lovely:denominator}}) then
+        G.GAME.moai_time = true
+    --end
+else G.GAME.moai_time = false end
+
+local moai_time = G.GAME.moai_time
+'''
+
+[[patches]]
+[patches.pattern]
+#Only one card appears
+target = "card.lua"
+pattern = '''local _size = self.ability.extra'''
+position = "after"
+match_indent = true
+payload = '''
+if moai_time then
+    _size = 1
+end
+'''
+
+[[patches]]
+[patches.pattern]
+#Creates a global variable on game_init (G.GAME.moai_time)
+target = "game.lua"
+pattern = "won = false,"
+position = "after"
+match_indent = true
+payload = '''
+moai_time = false,
+'''
+
+[[patches]]
+[patches.pattern]
+#Keeps the skip button disabled when the spectral pack is opened
+target = "functions/button_callbacks.lua"
+pattern = "if G.pack_cards and (not (G.GAME.STOP_USE and G.GAME.STOP_USE > 0)) and"
+position = "after"
+match_indent = true
+payload = '''
+not G.GAME.moai_time and
+'''

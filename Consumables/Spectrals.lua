@@ -62,3 +62,33 @@ SMODS.Consumable {
         -- table.insert(badges, 1, create_badge("Art: DemarcoCooley", G.C.GREY, G.C.WHITE, 0.8 ))
     end
 }
+
+SMODS.Atlas {
+    key = "crew_Moai",
+    path = "Moai.png",
+    px = 63, py = 93
+}
+
+SMODS.Consumable {
+    key = "crew_dumdum",
+    set = "Spectral",
+    loc_txt = {
+        name = "Moai",
+        text = {"Add {C:dark_edition}#1#{C:attention} Stone Cards{} to your hand."}
+    },
+    config = { extra = { modCards = 100 }},
+    loc_vars = function(self, info_queue, card)
+        return {vars = {card.ability.extra.modCards}}
+    end,
+
+    atlas = "crew_Moai",
+    pos = { x = 0, y = 0 },
+    cost = 10,
+    unlocked = true,
+    discovered = true,
+    hidden = false,
+
+    in_pool = function(self, args)
+        return false
+    end,
+}
