@@ -1,4 +1,14 @@
 SMODS.Sound {
+    key = 'crew_music_Project8',
+    path = 'Project_8.ogg',
+    select_music_track = function()
+        return (G.GAME == G.STATES.MENU) and 1 or false
+    end,
+    vol = 0.6,
+    pitch = 0.7
+}
+
+SMODS.Sound {
     key = 'crew_clutch',
     path = 'clutch1.ogg',
 }

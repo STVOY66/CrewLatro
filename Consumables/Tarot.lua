@@ -69,5 +69,10 @@ SMODS.Consumable {
             delay(0.5)
             G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.2,func = function() G.hand:remove_from_highlighted(v, false); return true end }))
         end
+    end,
+    
+    set_badges = function(self, card, badges)
+        badges[#badges+1] = create_badge("Art: DemarcoCooley", G.C.GREY, G.C.WHITE, 0.8 )
+        -- table.insert(badges, 1, create_badge("Art: DemarcoCooley", G.C.GREY, G.C.WHITE, 0.8 ))
     end
 }

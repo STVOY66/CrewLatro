@@ -57,8 +57,12 @@ SMODS.Joker {
                 }))
                 card_eval_status_text(card, 'extra', nil, nil, nil, {message = "Urgghh...", sound = "crew_poop", volume = 0.5})
             end
-        end
+        end,
         
+        set_badges = function(self, card, badges)
+            badges[#badges+1] = create_badge("Art: DemarcoCooley", G.C.GREY, G.C.WHITE, 0.8 )
+            -- table.insert(badges, 1, create_badge("Art: DemarcoCooley", G.C.GREY, G.C.WHITE, 0.8 ))
+        end
         -- if context.repetition and context.cardarea == G.play then
         --     for i=1, #context.scoring_hand do
         --         if context.scoring_hand[i]:is_face() then

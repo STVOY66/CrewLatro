@@ -34,6 +34,11 @@ SMODS.Joker {
     pos = { x = 0, y = 0 },
     cost = 5,
 
+    set_badges = function(self, card, badges)
+        badges[#badges+1] = create_badge("Art: DemarcoCooley", G.C.GREY, G.C.WHITE, 0.8 )
+        -- table.insert(badges, 1, create_badge("Art: DemarcoCooley", G.C.GREY, G.C.WHITE, 0.8 ))
+    end,
+
     calculate = function(self, card, context)
         if context.individual and context.cardarea == G.play then
             if context.other_card:get_id() == 7 and not card.ability.extra.trigger then

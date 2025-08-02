@@ -54,5 +54,10 @@ SMODS.Joker {
         if context.joker_main then
             return {chips = card.ability.extra.t_chips}
         end
+    end,
+
+    set_badges = function(self, card, badges)
+        badges[#badges+1] = create_badge("Art: DemarcoCooley", G.C.GREY, G.C.WHITE, 0.8 )
+        -- table.insert(badges, 1, create_badge("Art: DemarcoCooley", G.C.GREY, G.C.WHITE, 0.8 ))
     end
 }
