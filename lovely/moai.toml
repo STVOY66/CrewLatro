@@ -7,7 +7,7 @@ dump_lua = true
 
 [vars]
 numerator = "1"
-denominator= "1"
+denominator= "20"
 
 # Inject one or more lines of code before, after, or at (replacing) a line which matches
 # the provided pattern.
@@ -21,13 +21,14 @@ position = "after"
 match_indent = true
 payload = '''
 
-if self.ability.name:find('Spectral') then
-    if G.GAME.stake >= 3 and (pseudorandom("MoaiTime") < ({{lovely:numerator}}/{{lovely:denominator}})) then
-        G.GAME.moai_time = true
-    else G.GAME.moai_time = false end
-else G.GAME.moai_time = false end
+local moai_time = false
 
-local moai_time = G.GAME.moai_time
+if G.GAME.stake >= 3 and (pseudorandom("MoaiTime") < ({{lovely:numerator}}/{{lovely:denominator}})) then
+    moai_time = true
+end
+
+G.GAME.moai_time = moai_time
+
 '''
 
 [[patches]]
@@ -40,7 +41,23 @@ match_indent = true
 payload = '''
 if moai_time then
     _size = 1
+    G.GAME.pack_choices = 1
 end
+'''
+
+[[patches]]
+[patches.pattern]
+#Hijacks Booster code to spawn Moai.
+target = "card.lua"
+pattern = '''if booster_obj.create_card and type(booster_obj.create_card) == "function" then'''
+position = "at"
+match_indent = true
+payload = '''
+if moai_time then
+    local key_override = "c_crew_dumdum"
+    if (pseudorandom("bombtime") < (1/40)) and G.GAME.stake > 3 then key_override = "c_crew_500kg" end
+    card = SMODS.create_card({set = "Spectral", area = G.pack_cards, skip_materialize = true, soulable = false, key = key_override, key_append = "spe"})
+elseif booster_obj.create_card and type(booster_obj.create_card) == "function" then
 '''
 
 [[patches]]

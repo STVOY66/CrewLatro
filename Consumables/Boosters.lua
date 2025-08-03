@@ -1,11 +1,14 @@
-SMODS.Booster:take_ownership_by_kind("Spectral", {
-    create_card = function(self, card, i)
-        local card_to_create = {set = "Spectral", area = G.pack_cards, skip_materialize = true, soulable = true, key_append = "spe"}
-        if G.GAME.moai_time then
-            card_to_create.soulable = false
-            card_to_create.key = "c_crew_dumdum"
-            if (pseudorandom("bombtime") < (1/40)) and G.GAME.stake > 3 then card_to_create.key = "c_crew_500kg" end
-        end
-        return card_to_create
-    end
-}, true)
+------------------------------------------------------------------------------------------------------------------
+-- The below block is if 'moai_time' code is spectral specific, make sure to adjust relevant patch code as well --
+------------------------------------------------------------------------------------------------------------------
+-- SMODS.Booster:take_ownership_by_kind("Spectral", {
+--     create_card = function(self, card, i)
+--         local card_to_create = {set = "Spectral", area = G.pack_cards, skip_materialize = true, soulable = true, key_append = "spe"}
+--         if G.GAME.moai_time then
+--             card_to_create.soulable = false
+--             card_to_create.key = "c_crew_dumdum"
+--             if (pseudorandom("bombtime") < (1/40)) and G.GAME.stake > 3 then card_to_create.key = "c_crew_500kg" end
+--         end
+--         return card_to_create
+--     end
+-- }, true)
